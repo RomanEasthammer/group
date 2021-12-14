@@ -1,0 +1,12 @@
+def sender(id, text):
+    vk_session.method('messages.send', {'user_id' : id, 'message' : text, 'random_id' : 0, 'keyboard' : keyboard})
+ 
+def main():
+    for event in longpol.listen():
+        if event.type == VkEventType.MESSAGE_NEW:
+ 
+                id = event.user_id
+                msg = event.text.lower()
+ 
+                sender(id, msg.lower())
+ 
